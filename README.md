@@ -35,3 +35,8 @@ Finviz
 Others?
 
 Attempt to identify any patterns between changes in sentiment and the (presumably) laggy price changes as people buy and sell bitcoin in response
+
+
+#Historical Data for testing:
+
+https://www.quandl.com/collections/markets/bitcoin-data
