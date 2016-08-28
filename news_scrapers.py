@@ -48,7 +48,9 @@ class Finviz_Scraper:
                     # check if link is already in the DB, we only want new links
 					if self.datab.is_new_story(link.get('href')):
 						print(link.contents[0].encode('utf-8'))
-						self.datab.store_single({'type':'news_story','url':link.get('href'),'body':self.news_parser(link.get('href')).decode('utf-8','ignore').encode("utf-8"), 'retrieved':datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M:%S")})
+						# if bitcoin is mentioned somewhere in the story...
+						if 'bitcoin' in self.news_parser(link.get('href')):
+							self.datab.store_single({'type':'news_story','url':link.get('href'),'body':self.news_parser(link.get('href')).decode('utf-8','ignore').encode("utf-8"), 'retrieved':datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M:%S")})
                         
 	def news_parser(self,url):
 		#print(url)
