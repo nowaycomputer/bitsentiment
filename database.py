@@ -8,9 +8,8 @@ class Mongo_Database:
     def store_single(self, data):
         result=self.db.bitsentiment.insert_one(data)
 
-    def check_if_story_exists(self,url):
-        cursor=self.db.bitsentiment.find({"url":url})
-        if (cursor.count()<1):
+    def is_new_story(self,url):
+        if self.db.bitsentiment.find({'url': url}).count() > 0:
             return False
         else:
             return True
